@@ -1,0 +1,197 @@
+/* src/styles/globals.css */
+
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* ============================================================
+   RETAIL POS DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --rp-primary: #2563eb;
+  --rp-primary-light: #60a5fa;
+  --rp-primary-dark: #1d4ed8;
+
+  --rp-secondary: #0d9488;
+  --rp-secondary-light: #2dd4bf;
+  --rp-secondary-dark: #0f766e;
+
+  --rp-accent: #06b6d4;
+  --rp-accent-light: #22d3ee;
+  --rp-accent-dark: #0e7490;
+
+  /* Semantic */
+  --rp-success: #16a34a;
+  --rp-warning: #f59e0b;
+  --rp-danger: #dc2626;
+
+  /* Light surfaces */
+  --rp-background: #f6f9fc;
+  --rp-surface: #ffffff;
+  --rp-surface-elevated: #ffffff;
+
+  --rp-border: #e2e8f0;
+  --rp-border-strong: #cbd5e1;
+
+  --rp-text: #0f172a;
+  --rp-text-muted: #64748b;
+  --rp-text-subtle: #94a3b8;
+
+  /* Radius */
+  --rp-radius-sm: 6px;
+  --rp-radius-md: 8px;
+  --rp-radius-lg: 12px;
+  --rp-radius-xl: 16px;
+  --rp-radius-2xl: 20px;
+
+  /* Layout */
+  --rp-sidebar-width: 264px;
+  --rp-sidebar-collapsed-width: 76px;
+  --rp-topbar-height: 68px;
+
+  /* Shadows */
+  --rp-shadow-sm: 0 1px 3px rgb(15 23 42 / 0.06);
+  --rp-shadow-md: 0 4px 12px rgb(15 23 42 / 0.08);
+  --rp-shadow-lg: 0 12px 30px rgb(15 23 42 / 0.1);
+}
+
+/* ============================================================
+   TAILWIND DESIGN TOKENS
+   ============================================================ */
+
+@theme {
+  --font-sans:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-mono:
+    "JetBrains Mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  --color-primary: var(--rp-primary);
+  --color-secondary: var(--rp-secondary);
+  --color-accent: var(--rp-accent);
+
+  --color-success: var(--rp-success);
+  --color-warning: var(--rp-warning);
+  --color-danger: var(--rp-danger);
+
+  --color-app-bg: var(--rp-background);
+  --color-surface: var(--rp-surface);
+  --color-surface-elevated: var(--rp-surface-elevated);
+
+  --color-border: var(--rp-border);
+  --color-border-strong: var(--rp-border-strong);
+
+  --color-text: var(--rp-text);
+  --color-text-muted: var(--rp-text-muted);
+  --color-text-subtle: var(--rp-text-subtle);
+
+  --radius-sm: var(--rp-radius-sm);
+  --radius-md: var(--rp-radius-md);
+  --radius-lg: var(--rp-radius-lg);
+  --radius-xl: var(--rp-radius-xl);
+  --radius-2xl: var(--rp-radius-2xl);
+
+  --shadow-token-sm: var(--rp-shadow-sm);
+  --shadow-token-md: var(--rp-shadow-md);
+  --shadow-token-lg: var(--rp-shadow-lg);
+}
+
+/* ============================================================
+   DAISYUI SEMANTIC COLORS
+   ============================================================ */
+
+[data-theme="light"] {
+  --color-primary: #2563eb;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #0d9488;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #06b6d4;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #0f172a;
+  --color-neutral-content: #f8fafc;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f9;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0f172a;
+
+  --color-info: #0891b2;
+  --color-info-content: #ffffff;
+
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+
+  --color-warning: #f59e0b;
+  --color-warning-content: #0f172a;
+
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  --border: 1px;
+
+  --depth: 0;
+  --noise: 0;
+}
+
+[data-theme="dark"] {
+  --color-primary: #60a5fa;
+  --color-primary-content: #07111f;
+
+  --color-secondary: #2dd4bf;
+  --color-secondary-content: #07111f;
+
+  --color-accent: #22d3ee;
+  --color-accent-content: #07111f;
+
+  --color-neutral: #0f172a;
+  --color-neutral-content: #f8fafc;
+
+  --color-base-100: #07111f;
+  --color-base-200: #0b1628;
+  --color-base-300: #102039;
+  --color-base-content: #f8fafc;
+
+  --color-info: #22d3ee;
+  --color-info-content: #07111f;
+
+  --color-success: #4ade80;
+  --color-success-content: #07111f;
+
+  --color-warning: #fbbf24;
+  --color-warning-content: #07111f;
+
+  --color-error: #f87171;
+  --color-error-content: #07111f;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  --border: 1px;
+
+  --depth: 0;
+  --noise: 0;
+}

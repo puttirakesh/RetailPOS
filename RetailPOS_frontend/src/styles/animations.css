@@ -1,0 +1,85 @@
+/* src/styles/animations.css */
+
+@keyframes rp-fade-in {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rp-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rp-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rp-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .rp-fade-in {
+    animation: rp-fade-in 220ms ease-out both;
+  }
+  
+  .rp-slide-up {
+    animation: rp-slide-up 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  
+  .rp-slide-down {
+    animation: rp-slide-down 250ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  
+  .rp-scale-in {
+    animation: rp-scale-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  
+  .rp-hover-lift {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+  
+  .rp-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--rp-shadow-md);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
+    }
+  }

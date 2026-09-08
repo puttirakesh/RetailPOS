@@ -1,0 +1,28 @@
+export const branchMock = [
+    {
+      id: 1,
+      code: "BR001",
+      name: "Main Branch",
+      mobile: "9876543210",
+      email: "main@retailpos.com",
+      gstNo: "03ABCDE1234F1Z5",
+      address: "Ludhiana Main Market",
+      stateId: 1,
+      gstType: "Regular",
+      costCode: "CC001",
+      active: true,
+    },
+    {
+      id: 2,
+      code: "BR002",
+      name: "City Branch",
+      mobile: "9876501234",
+      email: "city@retailpos.com",
+      gstNo: "07ABCDE1234F1Z5",
+      address: "Delhi City Centre",
+      stateId: 2,
+      gstType: "Regular",
+      costCode: "CC002",
+      active: true,
+    },
+  ];

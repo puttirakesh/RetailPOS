@@ -1,0 +1,47 @@
+export const groupMock = [
+    {
+      id: 1,
+      code: "GRP001",
+      name: "General Goods",
+      slabRatesRequired: false,
+      taxMode: "flat",
+      coreTax: "18%",
+      slab: {
+        beforeValue: "",
+        beforeTax: "",
+        afterValue: "",
+        afterTax: "",
+      },
+      active: true,
+    },
+    {
+      id: 2,
+      code: "GRP002",
+      name: "Premium Products",
+      slabRatesRequired: true,
+      taxMode: "slab",
+      coreTax: "",
+      slab: {
+        beforeValue: "1000",
+        beforeTax: "12%",
+        afterValue: "1000",
+        afterTax: "18%",
+      },
+      active: true,
+    },
+    {
+      id: 3,
+      code: "GRP003",
+      name: "Low Tax Products",
+      slabRatesRequired: false,
+      taxMode: "flat",
+      coreTax: "5%",
+      slab: {
+        beforeValue: "",
+        beforeTax: "",
+        afterValue: "",
+        afterTax: "",
+      },
+      active: true,
+    },
+  ];

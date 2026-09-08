@@ -1,0 +1,32 @@
+export const categoryMock = [
+    {
+      id: 1,
+      code: "CAT001",
+      name: "Shirts",
+      groupId: 1,
+      taxInfo: "GST 18%",
+      assignAttributes: true,
+      attributeIds: [1, 2],
+      active: true,
+    },
+    {
+      id: 2,
+      code: "CAT002",
+      name: "Trousers",
+      groupId: 1,
+      taxInfo: "GST 18%",
+      assignAttributes: true,
+      attributeIds: [1, 3],
+      active: true,
+    },
+    {
+      id: 3,
+      code: "CAT003",
+      name: "Premium Jackets",
+      groupId: 2,
+      taxInfo: "Slab Tax",
+      assignAttributes: true,
+      attributeIds: [1, 2, 3],
+      active: true,
+    },
+  ];
