@@ -10,9 +10,7 @@ import {
 } from "react-router-dom";
 
 import DashboardLayout from "../layouts/DashboardLayout";
-
 import ProtectedRoute from "./ProtectedRoute";
-
 import RouteLoader from "../components/common/RouteLoader";
 
 /* =====================================================
@@ -126,6 +124,40 @@ const ProductEntryPage = lazy(() =>
 );
 
 /* =====================================================
+   PARTY MASTERS
+===================================================== */
+
+const CustomerPage = lazy(() =>
+  import(
+    "../features/masters/parties/customer/CustomerPage"
+  )
+);
+
+const SupplierPage = lazy(() =>
+  import(
+    "../features/masters/parties/supplier/SupplierPage"
+  )
+);
+
+const AgentPage = lazy(() =>
+  import(
+    "../features/masters/parties/agent/AgentPage"
+  )
+);
+
+const PurchaserPage = lazy(() =>
+  import(
+    "../features/masters/parties/purchaser/PurchaserPage"
+  )
+);
+
+const SalespersonPage = lazy(() =>
+  import(
+    "../features/masters/parties/salesperson/SalespersonPage"
+  )
+);
+
+/* =====================================================
    MAIN APPLICATION
 ===================================================== */
 
@@ -161,13 +193,13 @@ const NotFound = lazy(() =>
   import("../pages/errors/NotFound")
 );
 
+/* =====================================================
+   ROUTES
+===================================================== */
+
 export default function AppRoutes() {
   return (
-    <Suspense
-      fallback={
-        <RouteLoader />
-      }
-    >
+    <Suspense fallback={<RouteLoader />}>
       <Routes>
 
         {/* =================================================
@@ -183,14 +215,13 @@ export default function AppRoutes() {
             PROTECTED APPLICATION
         ================================================= */}
 
-        <Route
-          element={<ProtectedRoute />}
-        >
-          <Route
-            element={<DashboardLayout />}
-          >
+        <Route element={<ProtectedRoute />}>
 
-            {/* DEFAULT */}
+          <Route element={<DashboardLayout />}>
+
+            {/* =================================================
+                DEFAULT
+            ================================================= */}
 
             <Route
               path="/"
@@ -212,36 +243,26 @@ export default function AppRoutes() {
             />
 
             {/* =================================================
-                POS
+                OPERATIONS
             ================================================= */}
 
             <Route
               path="/pos"
-              element={
-                <PointOfSale />
-              }
+              element={<PointOfSale />}
             />
-
-            {/* =================================================
-                INVENTORY
-            ================================================= */}
 
             <Route
               path="/inventory"
-              element={
-                <Inventory />
-              }
+              element={<Inventory />}
             />
 
             {/* =================================================
-                MASTERS
+                MASTERS OVERVIEW
             ================================================= */}
 
             <Route
               path="/masters"
-              element={
-                <MastersOverview />
-              }
+              element={<MastersOverview />}
             />
 
             {/* =================================================
@@ -250,37 +271,27 @@ export default function AppRoutes() {
 
             <Route
               path="/masters/state"
-              element={
-                <StatePage />
-              }
+              element={<StatePage />}
             />
 
             <Route
               path="/masters/city"
-              element={
-                <CityPage />
-              }
+              element={<CityPage />}
             />
 
             <Route
               path="/masters/branch"
-              element={
-                <BranchPage />
-              }
+              element={<BranchPage />}
             />
 
             <Route
               path="/masters/tax"
-              element={
-                <TaxPage />
-              }
+              element={<TaxPage />}
             />
 
             <Route
               path="/masters/financial-year"
-              element={
-                <FinancialYearPage />
-              }
+              element={<FinancialYearPage />}
             />
 
             {/* =================================================
@@ -289,58 +300,71 @@ export default function AppRoutes() {
 
             <Route
               path="/masters/group"
-              element={
-                <GroupPage />
-              }
+              element={<GroupPage />}
             />
 
             <Route
               path="/masters/category"
-              element={
-                <CategoryPage />
-              }
+              element={<CategoryPage />}
             />
 
             <Route
               path="/masters/brand"
-              element={
-                <BrandPage />
-              }
+              element={<BrandPage />}
             />
 
             <Route
               path="/masters/mark"
-              element={
-                <MarkPage />
-              }
+              element={<MarkPage />}
             />
 
             <Route
               path="/masters/attribute"
-              element={
-                <AttributePage />
-              }
+              element={<AttributePage />}
             />
 
             <Route
               path="/masters/slab-manager"
-              element={
-                <SlabManagerPage />
-              }
+              element={<SlabManagerPage />}
             />
 
             <Route
               path="/masters/product"
-              element={
-                <ProductPage />
-              }
+              element={<ProductPage />}
             />
 
             <Route
               path="/masters/product-entry"
-              element={
-                <ProductEntryPage />
-              }
+              element={<ProductEntryPage />}
+            />
+
+            {/* =================================================
+                PARTY MASTERS
+            ================================================= */}
+
+            <Route
+              path="/masters/customer"
+              element={<CustomerPage />}
+            />
+
+            <Route
+              path="/masters/supplier"
+              element={<SupplierPage />}
+            />
+
+            <Route
+              path="/masters/agent"
+              element={<AgentPage />}
+            />
+
+            <Route
+              path="/masters/purchaser"
+              element={<PurchaserPage />}
+            />
+
+            <Route
+              path="/masters/salesperson"
+              element={<SalespersonPage />}
             />
 
             {/* =================================================
@@ -349,9 +373,7 @@ export default function AppRoutes() {
 
             <Route
               path="/reports"
-              element={
-                <Reports />
-              }
+              element={<Reports />}
             />
 
             {/* =================================================
@@ -360,9 +382,7 @@ export default function AppRoutes() {
 
             <Route
               path="/settings"
-              element={
-                <Settings />
-              }
+              element={<Settings />}
             />
 
           </Route>
@@ -374,9 +394,7 @@ export default function AppRoutes() {
 
         <Route
           path="*"
-          element={
-            <NotFound />
-          }
+          element={<NotFound />}
         />
 
       </Routes>

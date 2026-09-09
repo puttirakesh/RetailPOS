@@ -187,8 +187,9 @@ function FinancialYearTable({ years, onEdit, onDelete }) {
                   <td>{index + 1}</td>
                   <td className="font-mono">{year.code}</td>
                   <td className="font-medium">{year.name}</td>
-                  <td>{year.startDate}</td>
-                  <td>{year.endDate}</td>
+                  {/* Added whitespace-nowrap to keep dates on one line */}
+                  <td className="whitespace-nowrap">{year.startDate}</td>
+                  <td className="whitespace-nowrap">{year.endDate}</td>
                   <td>
                     {year.active ? (
                       <span className="badge badge-success badge-outline">Active</span>
@@ -326,8 +327,8 @@ export default function FinancialYearPage() {
         </button>
       </div>
 
-      {/* Form + Table Grid */}
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[360px_1fr]">
+      {/* Form + Table Grid - increased right column to 1.5fr for better date fit */}
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[360px_1.5fr]">
         <FinancialYearForm
           formData={formData}
           setFormData={setFormData}

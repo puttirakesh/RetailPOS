@@ -65,7 +65,6 @@ const branchMock = [
   },
 ];
 
-// Mock states (replace with actual data source)
 const stateMock = [
   { id: 1, name: "Punjab" },
   { id: 2, name: "Delhi" },
@@ -79,7 +78,6 @@ const stateMock = [
 function BranchForm({ formData, setFormData, onSave, onClear, editing, states, gstTypes }) {
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -97,14 +95,13 @@ function BranchForm({ formData, setFormData, onSave, onClear, editing, states, g
           <h2 className="text-lg font-semibold">{editing ? "Edit Branch" : "New Branch"}</h2>
           <p className="mt-1 text-xs text-base-content/50">Enter branch information.</p>
         </div>
-
         <button onClick={onClear} className="btn btn-ghost btn-sm gap-2">
           <RotateCcw size={15} /> Clear
         </button>
       </div>
 
       <form onSubmit={onSave} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="mb-1 block text-sm font-medium">Branch Code</label>
             <input
@@ -138,7 +135,7 @@ function BranchForm({ formData, setFormData, onSave, onClear, editing, states, g
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="mb-1 block text-sm font-medium">Mobile</label>
             <input
@@ -185,7 +182,7 @@ function BranchForm({ formData, setFormData, onSave, onClear, editing, states, g
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="mb-1 block text-sm font-medium">State</label>
             <select
@@ -230,12 +227,12 @@ function BranchForm({ formData, setFormData, onSave, onClear, editing, states, g
           <span className="text-sm font-medium">Active</span>
         </label>
 
-        <div className="flex gap-3 pt-3 flex-col md:flex-row">
+        <div className="flex gap-3 pt-3">
           <button type="submit" className="btn btn-primary flex-1 gap-2">
             {editing ? <Check size={17} /> : <Save size={17} />}
             {editing ? "Update Branch" : "Save Branch"}
           </button>
-          <button type="button" onClick={onClear} className="btn btn-ghost gap-2 flex-1">
+          <button type="button" onClick={onClear} className="btn btn-ghost gap-2">
             <X size={17} /> Cancel
           </button>
         </div>
@@ -253,19 +250,19 @@ function BranchTable({ branches, states, onEdit, onDelete }) {
     states.find((state) => state.id === Number(stateId))?.name || "Unknown";
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-base-300 bg-base-100 shadow-sm">
-      <div className="min-w-[600px]"> {/* min width for horizontal scroll on very small screens */}
-        <table className="table w-full">
+    <div className="overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm">
+      <div className="overflow-x-auto">
+        <table className="table">
           <thead>
             <tr>
-              <th className="whitespace-nowrap">#</th>
-              <th className="whitespace-nowrap">Code</th>
-              <th className="whitespace-nowrap">Name</th>
-              <th className="whitespace-nowrap">Mobile</th>
-              <th className="whitespace-nowrap">State</th>
-              <th className="whitespace-nowrap">GST Type</th>
-              <th className="whitespace-nowrap">Status</th>
-              <th className="whitespace-nowrap text-right">Actions</th>
+              <th>#</th>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>State</th>
+              <th>GST Type</th>
+              <th>Status</th>
+              <th className="text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -278,20 +275,20 @@ function BranchTable({ branches, states, onEdit, onDelete }) {
             ) : (
               branches.map((branch, index) => (
                 <motion.tr key={branch.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <td className="whitespace-nowrap">{index + 1}</td>
-                  <td className="font-mono whitespace-nowrap">{branch.code}</td>
-                  <td className="font-medium whitespace-nowrap">{branch.name}</td>
-                  <td className="whitespace-nowrap">{branch.mobile || "-"}</td>
-                  <td className="whitespace-nowrap">{getStateName(branch.stateId)}</td>
-                  <td className="whitespace-nowrap">{branch.gstType}</td>
-                  <td className="whitespace-nowrap">
+                  <td>{index + 1}</td>
+                  <td className="font-mono">{branch.code}</td>
+                  <td className="font-medium">{branch.name}</td>
+                  <td>{branch.mobile || "-"}</td>
+                  <td>{getStateName(branch.stateId)}</td>
+                  <td>{branch.gstType}</td>
+                  <td>
                     {branch.active ? (
                       <span className="badge badge-success badge-outline">Active</span>
                     ) : (
                       <span className="badge badge-error badge-outline">Inactive</span>
                     )}
                   </td>
-                  <td className="whitespace-nowrap">
+                  <td>
                     <div className="flex justify-end gap-2">
                       <button onClick={() => onEdit(branch)} className="btn btn-ghost btn-sm btn-square">
                         <Edit3 size={16} />
@@ -352,7 +349,8 @@ export default function BranchPage() {
 
     const duplicate = branches.some(
       (branch) =>
-        branch.code.toLowerCase() === formData.code.trim().toLowerCase() && branch.id !== formData.id
+        branch.code.toLowerCase() === formData.code.trim().toLowerCase() &&
+        branch.id !== formData.id
     );
     if (duplicate) {
       alert("Branch code already exists.");
@@ -398,7 +396,7 @@ export default function BranchPage() {
   };
 
   return (
-    <div className="space-y-6 px-2 md:px-4 xl:px-8 max-w-screen-2xl mx-auto w-full">
+    <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-3">
@@ -415,8 +413,8 @@ export default function BranchPage() {
         </button>
       </div>
 
-      {/* Form + Table Grid */}
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[420px_1fr]">
+      {/* Form + Table Grid - changed left column to 360px to match other pages */}
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[360px_1fr]">
         <BranchForm
           formData={formData}
           setFormData={setFormData}
@@ -427,11 +425,11 @@ export default function BranchPage() {
           gstTypes={branchConfig.gstTypes}
         />
 
-        <div className="space-y-4 w-full">
+        <div className="space-y-4">
           {/* Search & Refresh */}
           <div className="rounded-2xl border border-base-300 bg-base-100 p-4">
             <div className="flex flex-col gap-3 md:flex-row">
-              <div className="relative flex-1 min-w-0">
+              <div className="relative flex-1">
                 <Search size={17} className="absolute left-3 top-1/2 -translate-y-1/2 text-base-content/40" />
                 <input
                   value={search}
@@ -440,7 +438,7 @@ export default function BranchPage() {
                   className="input input-bordered w-full pl-10"
                 />
               </div>
-              <div className="flex gap-2 mt-2 md:mt-0">
+              <div className="flex gap-2">
                 <div className="rounded-xl bg-base-200 px-4 py-2 text-sm">
                   Count: <span className="ml-2 font-semibold">{filteredBranches.length}</span>
                 </div>
@@ -451,14 +449,12 @@ export default function BranchPage() {
             </div>
           </div>
 
-          <div className="w-full max-w-full">
-            <BranchTable
-              branches={filteredBranches}
-              states={states}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-            />
-          </div>
+          <BranchTable
+            branches={filteredBranches}
+            states={states}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
       </div>
     </div>
