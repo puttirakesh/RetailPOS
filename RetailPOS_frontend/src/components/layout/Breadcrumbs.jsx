@@ -8,55 +8,103 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import { breadcrumbMap } from "../../routes/routeUtils";
+const labels = {
+  dashboard: "Dashboard",
+  masters: "Masters",
+  state: "State",
+  city: "City",
+  branch: "Branch",
+  tax: "Tax",
+  "financial-year":
+    "Financial Year",
+  group: "Group",
+  category: "Category",
+  brand: "Brand",
+  mark: "Mark",
+  attribute: "Attribute",
+  "slab-manager":
+    "Slab Manager",
+  product: "Product",
+  "product-entry":
+    "Product Entry",
+  customer: "Customer",
+  supplier: "Supplier",
+  agent: "Agent",
+  purchaser: "Purchaser",
+  salesperson:
+    "Salesperson",
+  pos: "Point of Sale",
+  inventory: "Inventory",
+  reports: "Reports",
+  settings: "Settings",
+};
 
 export default function Breadcrumbs() {
   const location = useLocation();
 
-  const items =
-    breadcrumbMap[
-      location.pathname
-    ] || [];
+  const segments =
+    location.pathname
+      .split("/")
+      .filter(Boolean);
+
+  let currentPath = "";
 
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <nav className="flex min-w-0 items-center gap-1.5 overflow-x-auto text-sm">
       <Link
         to="/dashboard"
-        className="flex items-center gap-1 text-base-content/50 transition-colors hover:text-primary"
+        className="flex shrink-0 items-center gap-1.5 text-base-content/45 transition-colors hover:text-primary"
       >
-        <Home size={15} />
+        <Home size={14} />
         Home
       </Link>
 
-      {items.map(
-        (item, index) => {
+      {segments.map(
+        (segment, index) => {
+          currentPath += `/${segment}`;
+
           const isLast =
             index ===
-            items.length - 1;
+            segments.length - 1;
+
+          const label =
+            labels[segment] ||
+            segment
+              .replace(
+                /-/g,
+                " "
+              )
+              .replace(
+                /\b\w/g,
+                (char) =>
+                  char.toUpperCase()
+              );
 
           return (
             <div
-              key={`${item}-${index}`}
-              className="flex items-center gap-2"
+              key={
+                `${segment}-${index}`
+              }
+              className="flex min-w-0 shrink-0 items-center gap-1.5"
             >
               <ChevronRight
                 size={14}
-                className="text-base-content/30"
+                className="text-base-content/25"
               />
 
-              <span
-                className={
-                  isLast
-                    ? "font-medium text-base-content"
-                    : "text-base-content/50"
-                }
-              >
-                {item}
-              </span>
+              {isLast ? (
+                <span className="font-medium text-base-content">
+                  {label}
+                </span>
+              ) : (
+                <span className="text-base-content/45">
+                  {label}
+                </span>
+              )}
             </div>
           );
         }
       )}
-    </div>
+    </nav>
   );
 }

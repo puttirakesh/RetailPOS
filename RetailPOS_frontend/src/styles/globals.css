@@ -63,54 +63,25 @@
    TAILWIND DESIGN TOKENS
    ============================================================ */
 
-@theme {
-  --font-sans:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+   @theme {
+    --color-primary: #0d8de5;
+    --color-primary-content: #ffffff;
 
-  --font-mono:
-    "JetBrains Mono",
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    monospace;
+    --color-secondary: #06b6d4;
+    --color-secondary-content: #ffffff;
 
-  --color-primary: var(--rp-primary);
-  --color-secondary: var(--rp-secondary);
-  --color-accent: var(--rp-accent);
+    --color-background: #f6f9fc;
+    --color-surface: #ffffff;
 
-  --color-success: var(--rp-success);
-  --color-warning: var(--rp-warning);
-  --color-danger: var(--rp-danger);
+    --color-text: #17212b;
+    --color-text-muted: #667482;
+    --color-text-subtle: #94a3b8;
 
-  --color-app-bg: var(--rp-background);
-  --color-surface: var(--rp-surface);
-  --color-surface-elevated: var(--rp-surface-elevated);
+    --color-border: #e5eaf0;
 
-  --color-border: var(--rp-border);
-  --color-border-strong: var(--rp-border-strong);
-
-  --color-text: var(--rp-text);
-  --color-text-muted: var(--rp-text-muted);
-  --color-text-subtle: var(--rp-text-subtle);
-
-  --radius-sm: var(--rp-radius-sm);
-  --radius-md: var(--rp-radius-md);
-  --radius-lg: var(--rp-radius-lg);
-  --radius-xl: var(--rp-radius-xl);
-  --radius-2xl: var(--rp-radius-2xl);
-
-  --shadow-token-sm: var(--rp-shadow-sm);
-  --shadow-token-md: var(--rp-shadow-md);
-  --shadow-token-lg: var(--rp-shadow-lg);
-}
+    --shadow-token-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-token-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  }
 
 /* ============================================================
    DAISYUI SEMANTIC COLORS
@@ -157,6 +128,7 @@
 }
 
 [data-theme="dark"] {
+  /* Existing DaisyUI dark palette */
   --color-primary: #60a5fa;
   --color-primary-content: #07111f;
 
@@ -185,6 +157,14 @@
 
   --color-error: #f87171;
   --color-error-content: #07111f;
+
+  /* Additional enhanced variables for better styling */
+  --color-background: #0b1118;
+  --color-surface: #111a24;
+  --color-text: #edf4fa;
+  --color-text-muted: #9eafbf;
+  --color-text-subtle: #6f8294;
+  --color-border: #243242;
 
   --radius-selector: 0.5rem;
   --radius-field: 0.5rem;

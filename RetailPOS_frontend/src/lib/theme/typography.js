@@ -1,18 +1,18 @@
-// src/lib/theme/typography.js
-
-export const fontFamily = {
+export const typography = {
+  fontFamily: {
     sans: [
       "Inter",
       "ui-sans-serif",
       "system-ui",
       "-apple-system",
       "BlinkMacSystemFont",
-      '"Segoe UI"',
+      "Segoe UI",
       "sans-serif",
     ].join(", "),
-  
+
     mono: [
-      '"JetBrains Mono"',
+      "JetBrains Mono",
+      "Fira Code",
       "ui-monospace",
       "SFMono-Regular",
       "Menlo",
@@ -20,74 +20,87 @@ export const fontFamily = {
       "Consolas",
       "monospace",
     ].join(", "),
-  };
-  
-  export const typography = {
-    fontFamily,
-  
-    display: {
-      fontSize: "2.25rem",
-      lineHeight: "2.75rem",
-      fontWeight: 700,
-      letterSpacing: "-0.03em",
-    },
-  
+  },
+
+  fontSize: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
+    "3xl": "1.875rem",
+    "4xl": "2.25rem",
+    "5xl": "3rem",
+  },
+
+  lineHeight: {
+    tight: 1.2,
+    normal: 1.5,
+    relaxed: 1.7,
+  },
+
+  fontWeight: {
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+  },
+
+  heading: {
     h1: {
-      fontSize: "2rem",
-      lineHeight: "2.5rem",
+      fontSize: "1.875rem",
+      lineHeight: 1.2,
       fontWeight: 700,
       letterSpacing: "-0.025em",
     },
-  
+
     h2: {
       fontSize: "1.5rem",
-      lineHeight: "2rem",
+      lineHeight: 1.25,
       fontWeight: 700,
       letterSpacing: "-0.02em",
     },
-  
+
     h3: {
       fontSize: "1.25rem",
-      lineHeight: "1.75rem",
-      fontWeight: 650,
+      lineHeight: 1.3,
+      fontWeight: 600,
     },
-  
+
     h4: {
       fontSize: "1.125rem",
-      lineHeight: "1.5rem",
+      lineHeight: 1.35,
       fontWeight: 600,
     },
-  
-    body: {
-      fontSize: "0.9375rem",
-      lineHeight: "1.5rem",
+  },
+
+  body: {
+    large: {
+      fontSize: "1rem",
+      lineHeight: 1.6,
       fontWeight: 400,
     },
-  
-    bodySmall: {
+
+    normal: {
+      fontSize: "0.875rem",
+      lineHeight: 1.55,
+      fontWeight: 400,
+    },
+
+    small: {
       fontSize: "0.8125rem",
-      lineHeight: "1.25rem",
+      lineHeight: 1.5,
       fontWeight: 400,
     },
-  
-    label: {
-      fontSize: "0.75rem",
-      lineHeight: "1rem",
-      fontWeight: 600,
-      letterSpacing: "0.02em",
-    },
-  
-    caption: {
+
+    tiny: {
       fontSize: "0.6875rem",
-      lineHeight: "1rem",
+      lineHeight: 1.4,
       fontWeight: 500,
     },
-  
-    button: {
-      fontSize: "0.875rem",
-      lineHeight: "1.25rem",
-      fontWeight: 600,
-    },
-  };
-  
-  export default typography;
+  },
+};
+
+export default typography;

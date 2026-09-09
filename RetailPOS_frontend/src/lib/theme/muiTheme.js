@@ -1,142 +1,115 @@
-// src/lib/theme/muiTheme.js
+import {
+  createTheme,
+} from "@mui/material/styles";
 
-import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 import typography from "./typography";
-import spacing, { radius } from "./spacing";
-import { shadows } from "./designTokens";
 
-export const createMuiAppTheme = (mode = "light") => {
-  const isDark = mode === "dark";
-
-  const surface = isDark ? colors.dark : colors.light;
+export function createMuiTheme(mode = "light") {
+  const dark = mode === "dark";
 
   return createTheme({
     palette: {
       mode,
 
       primary: {
-        main: colors.primary[600],
+        main: colors.primary[500],
         light: colors.primary[400],
-        dark: colors.primary[800],
-        contrastText: "#FFFFFF",
+        dark: colors.primary[700],
+        contrastText: "#ffffff",
       },
 
       secondary: {
-        main: colors.secondary[600],
-        light: colors.secondary[400],
-        dark: colors.secondary[800],
-        contrastText: "#FFFFFF",
-      },
-
-      info: {
-        main: colors.accent[600],
-        light: colors.accent[400],
-        dark: colors.accent[800],
-        contrastText: "#FFFFFF",
+        main: colors.cyan[500],
+        light: colors.cyan[400],
+        dark: colors.cyan[700],
+        contrastText: "#ffffff",
       },
 
       success: {
-        main: colors.success[600],
-        light: colors.success[400],
-        dark: colors.success[800],
-        contrastText: "#FFFFFF",
+        main: colors.success[500],
+        dark: colors.success[700],
       },
 
       warning: {
         main: colors.warning[500],
-        light: colors.warning[400],
         dark: colors.warning[700],
-        contrastText: "#0F172A",
       },
 
       error: {
-        main: colors.danger[600],
-        light: colors.danger[400],
-        dark: colors.danger[800],
-        contrastText: "#FFFFFF",
+        main: colors.error[500],
+        dark: colors.error[700],
+      },
+
+      info: {
+        main: colors.info[500],
+        dark: colors.info[700],
       },
 
       background: {
-        default: surface.background,
-        paper: surface.surface,
+        default: dark
+          ? colors.dark.background
+          : colors.light.background,
+
+        paper: dark
+          ? colors.dark.surface
+          : colors.light.surface,
       },
 
       text: {
-        primary: surface.text,
-        secondary: surface.textMuted,
+        primary: dark
+          ? colors.dark.text
+          : colors.light.text,
+
+        secondary: dark
+          ? colors.dark.textMuted
+          : colors.light.textMuted,
       },
 
-      divider: surface.border,
+      divider: dark
+        ? colors.dark.border
+        : colors.light.border,
     },
 
     typography: {
-      fontFamily: typography.fontFamily.sans,
+      fontFamily:
+        typography.fontFamily.sans,
 
-      h1: typography.h1,
-      h2: typography.h2,
-      h3: typography.h3,
-      h4: typography.h4,
-
-      body1: typography.body,
-      body2: typography.bodySmall,
-
-      button: {
-        ...typography.button,
-        textTransform: "none",
+      h1: {
+        fontSize: "1.875rem",
+        fontWeight: 700,
+        letterSpacing: "-0.025em",
       },
 
-      caption: typography.caption,
-    },
+      h2: {
+        fontSize: "1.5rem",
+        fontWeight: 700,
+      },
 
-    spacing: 4,
+      h3: {
+        fontSize: "1.25rem",
+        fontWeight: 600,
+      },
+
+      body1: {
+        fontSize: "0.875rem",
+      },
+
+      body2: {
+        fontSize: "0.8125rem",
+      },
+
+      button: {
+        textTransform: "none",
+        fontWeight: 600,
+      },
+    },
 
     shape: {
       borderRadius: 12,
     },
 
-    shadows: [
-      shadows.none,
-      shadows.xs,
-      shadows.sm,
-      shadows.md,
-      shadows.lg,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-      shadows.xl,
-    ],
-
     components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          body: {
-            backgroundColor: surface.background,
-            color: surface.text,
-          },
-
-          "*": {
-            scrollbarWidth: "thin",
-          },
-        },
-      },
-
       MuiButton: {
         defaultProps: {
           disableElevation: true,
@@ -144,17 +117,12 @@ export const createMuiAppTheme = (mode = "light") => {
 
         styleOverrides: {
           root: {
-            minHeight: "42px",
-            borderRadius: radius.md,
-            paddingInline: spacing[4],
+            borderRadius: 10,
+            minHeight: 40,
+            paddingLeft: 16,
+            paddingRight: 16,
+            textTransform: "none",
             fontWeight: 600,
-            transition: "all 180ms ease",
-          },
-
-          containedPrimary: {
-            "&:hover": {
-              transform: "translateY(-1px)",
-            },
           },
         },
       },
@@ -167,35 +135,38 @@ export const createMuiAppTheme = (mode = "light") => {
         styleOverrides: {
           root: {
             "& .MuiOutlinedInput-root": {
-              minHeight: "42px",
-              borderRadius: radius.md,
+              borderRadius: 10,
+
+              "&:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor:
+                    colors.primary[400],
+                },
+
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderWidth: 1.5,
+                },
             },
           },
         },
       },
 
-      MuiOutlinedInput: {
-        styleOverrides: {
-          root: {
-            backgroundColor: surface.surface,
-
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: colors.primary[400],
-            },
-
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderWidth: "2px",
-            },
-          },
+      MuiSelect: {
+        defaultProps: {
+          size: "small",
         },
       },
 
-      MuiCard: {
+      MuiPaper: {
         styleOverrides: {
           root: {
-            borderRadius: radius.xl,
-            border: `1px solid ${surface.border}`,
             backgroundImage: "none",
+            border: `1px solid ${
+              dark
+                ? colors.dark.border
+                : colors.light.border
+            }`,
           },
         },
       },
@@ -203,8 +174,9 @@ export const createMuiAppTheme = (mode = "light") => {
       MuiDialog: {
         styleOverrides: {
           paper: {
-            borderRadius: radius.xl,
-            backgroundImage: "none",
+            borderRadius: 20,
+            boxShadow:
+              "0 20px 50px rgba(0, 0, 0, 0.15)",
           },
         },
       },
@@ -212,25 +184,28 @@ export const createMuiAppTheme = (mode = "light") => {
       MuiTooltip: {
         styleOverrides: {
           tooltip: {
-            borderRadius: radius.sm,
+            borderRadius: 8,
             fontSize: "0.75rem",
+            padding: "8px 10px",
           },
         },
       },
 
-      MuiChip: {
+      MuiTableCell: {
         styleOverrides: {
           root: {
-            borderRadius: radius.full,
+            borderColor: dark
+              ? colors.dark.border
+              : colors.light.border,
+          },
+
+          head: {
             fontWeight: 600,
           },
         },
       },
     },
   });
-};
+}
 
-export const lightMuiTheme = createMuiAppTheme("light");
-export const darkMuiTheme = createMuiAppTheme("dark");
-
-export default lightMuiTheme;
+export default createMuiTheme;

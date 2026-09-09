@@ -1,43 +1,29 @@
-// src/lib/theme/spacing.js
-
 export const spacing = {
-    0: "0px",
-    1: "4px",
-    2: "8px",
-    3: "12px",
-    4: "16px",
-    5: "20px",
-    6: "24px",
-    7: "28px",
-    8: "32px",
-    10: "40px",
-    12: "48px",
-    14: "56px",
-    16: "64px",
-    20: "80px",
-    24: "96px",
-  };
-  
-  export const radius = {
-    none: "0px",
-    sm: "6px",
-    md: "8px",
-    lg: "12px",
-    xl: "16px",
-    "2xl": "20px",
-    "3xl": "24px",
-    full: "9999px",
-  };
-  
-  export const sizes = {
-    sidebar: "264px",
-    sidebarCollapsed: "76px",
-    topbar: "68px",
-    input: "42px",
-    inputSmall: "36px",
-    button: "42px",
-    buttonSmall: "36px",
-    tableRow: "52px",
-  };
-  
-  export default spacing;
+  0: "0px",
+  1: "0.25rem",
+  2: "0.5rem",
+  3: "0.75rem",
+  4: "1rem",
+  5: "1.25rem",
+  6: "1.5rem",
+  7: "1.75rem",
+  8: "2rem",
+  10: "2.5rem",
+  12: "3rem",
+  14: "3.5rem",
+  16: "4rem",
+  20: "5rem",
+  24: "6rem",
+  32: "8rem",
+};
+
+export const layout = {
+  sidebarWidth: "260px",
+  sidebarCollapsedWidth: "76px",
+  topbarHeight: "68px",
+  contentMaxWidth: "1600px",
+  pagePadding: "1.5rem",
+  mobilePagePadding: "1rem",
+};
+
+export default spacing;
